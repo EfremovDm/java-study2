@@ -1,5 +1,5 @@
-package ru.efremovdm.Lesson1.Obstacles;
-import ru.efremovdm.Lesson1.Animals.*;
+package ru.efremovdm.Lesson1.obstacles;
+import ru.efremovdm.Lesson1.animals.*;
 
 /**
  * Препятствие: трек

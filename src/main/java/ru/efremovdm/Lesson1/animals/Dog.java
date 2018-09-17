@@ -1,4 +1,4 @@
-package ru.efremovdm.Lesson1.Animals;
+package ru.efremovdm.Lesson1.animals;
 
 /**
  * Собака

@@ -1,4 +1,4 @@
-package ru.efremovdm.Lesson2;
+package ru.efremovdm.lesson2;
 
 
 /**

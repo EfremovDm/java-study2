@@ -1,4 +1,4 @@
-package ru.efremovdm.Lesson1.animals;
+package ru.efremovdm.lesson1.animals;
 
 import java.util.Random;
 

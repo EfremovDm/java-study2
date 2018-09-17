@@ -1,7 +1,7 @@
-package ru.efremovdm.Lesson1.obstacles;
+package ru.efremovdm.lesson1.obstacles;
 
 import java.util.*;
-import ru.efremovdm.Lesson1.animals.*;
+import ru.efremovdm.lesson1.animals.*;
 
 /**
  * 3. Добавить класс Course (полоса препятствий), в котором будут находиться массив

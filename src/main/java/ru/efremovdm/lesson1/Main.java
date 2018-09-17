@@ -1,7 +1,7 @@
-package ru.efremovdm.Lesson1;
+package ru.efremovdm.lesson1;
 
-import ru.efremovdm.Lesson1.animals.Team;
-import ru.efremovdm.Lesson1.obstacles.Course;
+import ru.efremovdm.lesson1.animals.Team;
+import ru.efremovdm.lesson1.obstacles.Course;
 
 /**
  * 1. Разобраться с имеющимся кодом;

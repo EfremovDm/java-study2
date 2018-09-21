@@ -2,13 +2,13 @@ package ru.efremovdm.lesson2;
 
 public class MyArrayDataException extends Exception{
 
-    private String str1;
+    private String str;
 
-    MyArrayDataException(String str2) {
-        str1 = str2;
+    MyArrayDataException(String ex) {
+        str = ex;
     }
 
     public String toString(){
-        return ("MyArrayDataException: " + str1) ;
+        return ("MyArrayDataException: " + str) ;
     }
 }

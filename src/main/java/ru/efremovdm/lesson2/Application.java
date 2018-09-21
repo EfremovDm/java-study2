@@ -13,7 +13,7 @@ package ru.efremovdm.lesson2;
  * 3. В методе main() вызвать полученный метод, обработать возможные исключения
  * MySizeArrayException и MyArrayDataException и вывести результат расчета.
  */
-public class Main
+public class Application
 {
     public static void main( String[] args )
     {

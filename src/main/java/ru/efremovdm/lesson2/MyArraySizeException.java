@@ -2,13 +2,13 @@ package ru.efremovdm.lesson2;
 
 public class MyArraySizeException extends Exception{
 
-    private String str1;
+    private String str;
 
-    MyArraySizeException(String str2) {
-        str1 = str2;
+    MyArraySizeException(String ex) {
+        str = ex;
     }
 
     public String toString(){
-        return ("MyArraySizeException: " + str1) ;
+        return ("MyArraySizeException: " + str) ;
     }
 }

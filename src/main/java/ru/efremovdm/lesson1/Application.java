@@ -11,7 +11,7 @@ import ru.efremovdm.lesson1.obstacles.Course;
  *
  * 3. Добавить класс Course (полоса препятствий), в котором будут находиться массив препятствий и метод, который будет просить команду пройти всю полосу;
  */
-public class Main
+public class Application
 {
     public static void main( String[] args )
     {

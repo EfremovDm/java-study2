@@ -48,8 +48,10 @@ import java.util.concurrent.Executors;
  */
 public class Application
 {
+    private static final int THREADS = 10;
     private static final int SIZE = 10000000;
     private static float[][] step_arr;
+    private static int step_threads = 0;
 
     /**
      * Запуск алгоритма работы с массивами с итерациями от 1 до 10 потоков.
@@ -58,12 +60,24 @@ public class Application
      */
     public static void main( String[] args )
     {
-        for (int i = 1; i <= 10; i++) {
-            createArrayAsynk(i);
-        }
+        try {
 
-        //Application app = new Application();
-        //app.createExecutorService(3);
+            Application app = new Application();
+
+            System.out.println("Simple Threads Runable execution:");
+            for (int i = 1; i <= THREADS; i++) {
+                app.createArrayAsynk(i);
+            }
+            System.out.println("\n");
+
+            System.out.println("ExecutorService threads execution:");
+            for (int i = 1; i <= THREADS; i++) {
+                app.createExecutorService(i);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -71,7 +85,7 @@ public class Application
      *
      * @param threads - количество потоков, на которое разбить вычисления.
      */
-    private static void createArrayAsynk(int threads) {
+    private void createArrayAsynk(int threads) {
 
         float[] arr = new float[SIZE];
         for (int i = 0; i < SIZE; i++) {
@@ -99,8 +113,9 @@ public class Application
         System.out.println(threads + " thread execution method timing is: " + (endTime - startTime) + " ms.");
     }
 
-    private void createExecutorService(int threads) {
+    private void createExecutorService(int threads) throws InterruptedException {
 
+        step_threads = 0;
         float[] arr = new float[SIZE];
         for (int i = 0; i < SIZE; i++) {
             arr[i] = 1;
@@ -121,8 +136,14 @@ public class Application
             service.submit(new Runnable() {
                 public void run() {
                     calculate(step_arr[iter]);
+                    step_threads++;
                 }
             });
+        }
+
+        // ждем завершения тредов внутри ExecutorService для замеров времени
+        while (step_threads < threads) {
+            Thread.sleep(100);
         }
 
         for (int i = 0; i < threads; i++) {

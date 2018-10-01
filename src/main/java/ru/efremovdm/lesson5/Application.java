@@ -1,5 +1,8 @@
 package ru.efremovdm.lesson5;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * 1. Необходимо написать два метода, которые делают следующее:
  *
@@ -58,6 +61,9 @@ public class Application
         for (int i = 1; i <= 10; i++) {
             createArrayAsynk(i);
         }
+
+        //Application app = new Application();
+        //app.createExecutorService(3);
     }
 
     /**
@@ -83,6 +89,40 @@ public class Application
 
         for (int i = 0; i < threads; i++) {
             myAsynkTask(i);
+        }
+
+        for (int i = 0; i < threads; i++) {
+            System.arraycopy(step_arr[i], 0, arr, step_size * i, step_size);
+        }
+
+        long endTime = System.currentTimeMillis();
+        System.out.println(threads + " thread execution method timing is: " + (endTime - startTime) + " ms.");
+    }
+
+    private void createExecutorService(int threads) {
+
+        float[] arr = new float[SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            arr[i] = 1;
+        }
+
+        int step_size = SIZE / threads;
+        step_arr = new float[threads][step_size];
+
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 0; i < threads; i++) {
+            System.arraycopy(arr, step_size * i, step_arr[i], 0, step_size);
+        }
+
+        final ExecutorService service = Executors.newFixedThreadPool(threads);
+        for (int i = 0; i < threads; i++) {
+            final int iter = i;
+            service.submit(new Runnable() {
+                public void run() {
+                    calculate(step_arr[iter]);
+                }
+            });
         }
 
         for (int i = 0; i < threads; i++) {
